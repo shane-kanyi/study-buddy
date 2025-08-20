@@ -124,17 +124,17 @@
           });
         };
 
+        // This is the NEW corrected code
         $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
-          if($(e.target).hasClass('external')) {
-            return;
+          // Check if the link is for a section on the current page (starts with '#')
+          if ($(this).attr('href').charAt(0) === '#') {
+            // If it is, prevent the default jump and do the smooth scroll
+            e.preventDefault();
+            $('#menu').removeClass('active');
+            showSection($(this).attr('href'), true);
           }
-          e.preventDefault();
-          $('#menu').removeClass('active');
-          showSection($(this).attr('href'), true);
-        });
-
-        $(window).scroll(function () {
-          checkSection();
+          // For all other links (like /login, /register), this code does nothing,
+          // allowing the link to work as a normal page navigation.
         });
     </script>
 </body>
