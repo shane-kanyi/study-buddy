@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::middleware([\App\Http\Middleware\IsAdmin::class])->prefix('admin')->name('admin.')->group(function () {
         Route::resource('subjects', SubjectController::class);
         Route::get('tutors', [TutorManagementController::class, 'index'])->name('tutors.index');
         Route::patch('tutors/{tutorProfile}/verify', [TutorManagementController::class, 'verify'])->name('tutors.verify');
