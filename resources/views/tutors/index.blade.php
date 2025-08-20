@@ -31,7 +31,9 @@
                             </div>
 
                             <div class="text-button-pay">
-                                <a href="#">Book Session (Rate: ${{ number_format($tutor->tutorProfile->hourly_rate, 2) }}/hr) <i class="fa fa-angle-double-right"></i></a>
+                                <a href="{{ route('tutors.show', $tutor) }}">
+                                    View Profile (Rate: ${{ number_format($tutor->tutorProfile->hourly_rate, 2) }}/hr) <i class="fa fa-angle-double-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

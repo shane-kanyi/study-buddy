@@ -25,4 +25,22 @@ class TutorController extends Controller
 
         return view('tutors.index', compact('tutors'));
     }
+    
+    /**
+     * Display the specified tutor's public profile.
+     * Laravel's Route Model Binding automatically finds the User by their ID.
+     */
+    public function show(User $user)
+    {
+        // First, ensure the user we are trying to view is actually a tutor.
+        // This prevents people from trying to view profiles of students or admins.
+        if ($user->role !== 'tutor' || !$user->tutorProfile?->verified_at) {
+            abort(404); // Not Found
+        }
+
+        // Eager load the necessary relationships for the view
+        $user->load(['tutorProfile', 'tutorProfile.subjects']);
+
+        return view('tutors.show', ['tutor' => $user]);
+    }
 }

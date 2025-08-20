@@ -14,6 +14,8 @@ Route::get('/', function () {
 
 Route::get('/tutors', [TutorController::class, 'index'])->name('tutors.index');
 
+Route::get('/tutors/{user}', [TutorController::class, 'show'])->name('tutors.show');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
