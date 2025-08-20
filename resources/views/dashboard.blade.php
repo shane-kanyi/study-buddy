@@ -35,7 +35,11 @@
 
                     @elseif(auth()->user()->role == 'tutor')
                         <p>Welcome to your Tutor Dashboard. You can now be booked for sessions.</p>
-                        {{-- Tutor-specific links will go here in a future step --}}
+                        <div class="mt-4">
+                            <a href="{{ route('tutor.profile.edit') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
+                                Manage My Profile & Subjects
+                            </a>
+                        </div>
 
                     @else
                         {{-- This section is for users with the default 'student' role --}}

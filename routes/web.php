@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\TutorApplicationController;
 use App\Http\Controllers\Admin\TutorManagementController;
+use App\Http\Controllers\Tutor\ProfileController as TutorProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,12 @@ Route::middleware('auth')->group(function () {
     // Tutor Application Routes
     Route::get('/tutor/apply', [TutorApplicationController::class, 'create'])->name('tutor.apply');
     Route::post('/tutor/apply', [TutorApplicationController::class, 'store'])->name('tutor.store');
+
+    // TUTOR ROUTES
+    Route::middleware(['tutor'])->prefix('tutor')->name('tutor.')->group(function () {
+        Route::get('profile', [TutorProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [TutorProfileController::class, 'update'])->name('profile.update');
+    });
 });
 
 require __DIR__.'/auth.php';
