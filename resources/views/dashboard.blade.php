@@ -39,6 +39,8 @@
                             <a href="{{ route('tutor.profile.edit') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700">
                                 Manage My Profile & Subjects
                             </a>
+
+                             <a href="{{ route('tutor.sessions.index') }}" class="font-semibold text-blue-600 hover:text-blue-800">Manage Sessions</a>
                         </div>
 
                     @else

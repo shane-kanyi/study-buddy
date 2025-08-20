@@ -33,7 +33,15 @@
                                     </div>
                                     
                                     <div class="main-button mt-4">
-                                        <a href="#">Book a Session with {{ $tutor->name }}</a>
+                                        @auth
+                                            {{-- Only show the booking button if the logged-in user is NOT the tutor themselves --}}
+                                            @if(auth()->user()->id !== $tutor->id)
+                                                <a href="{{ route('booking.create', ['tutor' => $tutor]) }}">Book a Session with {{ $tutor->name }}</a>
+                                            @endif
+                                        @else
+                                            {{-- Show a login prompt for guests --}}
+                                            <a href="{{ route('login') }}">Login to Book a Session</a>
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
