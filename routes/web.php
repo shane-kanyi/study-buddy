@@ -9,6 +9,7 @@ use App\Http\Controllers\Tutor\ProfileController as TutorProfileController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Tutor\SessionController as TutorSessionController;
+use App\Http\Controllers\Student\SessionController as StudentSessionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,12 +47,15 @@ Route::middleware('auth')->group(function () {
         Route::get('sessions', [TutorSessionController::class, 'index'])->name('sessions.index');
         Route::patch('sessions/{tutorSession}/confirm', [TutorSessionController::class, 'confirm'])->name('sessions.confirm');
         Route::patch('sessions/{tutorSession}/cancel', [TutorSessionController::class, 'cancel'])->name('sessions.cancel');
-        
+
     });
 
     // Booking Routes
     Route::get('/booking/create/{tutor}', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+
+    // Student-specific Routes
+    Route::get('/my-sessions', [StudentSessionController::class, 'index'])->name('student.sessions.index');
 });
 
 require __DIR__.'/auth.php';

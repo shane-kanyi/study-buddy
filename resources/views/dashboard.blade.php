@@ -45,6 +45,12 @@
 
                     @else
                         {{-- This section is for users with the default 'student' role --}}
+                        <div class="mb-4">
+                            <a href="{{ route('student.sessions.index') }}" class="font-semibold text-blue-600 hover:text-blue-800">
+                                View My Booked Sessions
+                            </a>
+                        </div>
+                        
                         @if(auth()->user()->tutorProfile)
                             @if(auth()->user()->tutorProfile->verified_at)
                                 {{-- This case should not happen if role is 'student', but is a safe fallback --}}
