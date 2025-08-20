@@ -10,6 +10,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+
+                    @if(auth()->user()->role == 'admin')
+                        <div class="mt-4">
+                            <a href="{{ route('admin.subjects.index') }}" class="font-semibold text-blue-600 hover:text-blue-800">
+                                Manage Subjects
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
