@@ -29,6 +29,8 @@
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="{{ url('/') }}">Home</a></li>
+
+        <li><a href="{{ route('tutors.index') }}">Find a Tutor</a></li>
         
         {{-- Show these links if the user is a GUEST (not logged in) --}}
         @guest

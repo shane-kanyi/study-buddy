@@ -6,10 +6,14 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\TutorApplicationController;
 use App\Http\Controllers\Admin\TutorManagementController;
 use App\Http\Controllers\Tutor\ProfileController as TutorProfileController;
+use App\Http\Controllers\TutorController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tutors', [TutorController::class, 'index'])->name('tutors.index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
